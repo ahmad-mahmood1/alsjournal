@@ -1,0 +1,784 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
+  "version": "5",
+  "dialect": "mysql",
+  "tables": {
+    "jio_links": {
+      "name": "jio_links",
+      "columns": {
+        "link_id": {
+          "autoincrement": true,
+          "name": "link_id",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "link_url": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "link_url",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "link_name": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "link_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "link_image": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "link_image",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "link_target": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "link_target",
+          "type": "varchar(25)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "link_description": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "link_description",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "link_visible": {
+          "default": "'Y'",
+          "autoincrement": false,
+          "name": "link_visible",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "link_owner": {
+          "default": 1,
+          "autoincrement": false,
+          "name": "link_owner",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "link_rating": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "link_rating",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "link_updated": {
+          "default": "'0000-00-00 00:00:00'",
+          "autoincrement": false,
+          "name": "link_updated",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "link_rel": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "link_rel",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "link_notes": {
+          "autoincrement": false,
+          "name": "link_notes",
+          "type": "mediumtext",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "link_rss": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "link_rss",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "jio_links_link_id": {
+          "name": "jio_links_link_id",
+          "columns": [
+            "link_id"
+          ]
+        }
+      },
+      "indexes": {
+        "link_visible": {
+          "name": "link_visible",
+          "columns": [
+            "link_visible"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "jio_postmeta": {
+      "name": "jio_postmeta",
+      "columns": {
+        "meta_id": {
+          "autoincrement": true,
+          "name": "meta_id",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_id": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "post_id",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "meta_key": {
+          "autoincrement": false,
+          "name": "meta_key",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "meta_value": {
+          "autoincrement": false,
+          "name": "meta_value",
+          "type": "longtext",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "jio_postmeta_meta_id": {
+          "name": "jio_postmeta_meta_id",
+          "columns": [
+            "meta_id"
+          ]
+        }
+      },
+      "indexes": {
+        "meta_key": {
+          "name": "meta_key",
+          "columns": [
+            "meta_key"
+          ],
+          "isUnique": false
+        },
+        "post_id": {
+          "name": "post_id",
+          "columns": [
+            "post_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "jio_posts": {
+      "name": "jio_posts",
+      "columns": {
+        "ID": {
+          "autoincrement": true,
+          "name": "ID",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_author": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "post_author",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_date": {
+          "default": "'0000-00-00 00:00:00'",
+          "autoincrement": false,
+          "name": "post_date",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_date_gmt": {
+          "default": "'0000-00-00 00:00:00'",
+          "autoincrement": false,
+          "name": "post_date_gmt",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_content": {
+          "autoincrement": false,
+          "name": "post_content",
+          "type": "longtext",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_title": {
+          "autoincrement": false,
+          "name": "post_title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_excerpt": {
+          "autoincrement": false,
+          "name": "post_excerpt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_status": {
+          "default": "'publish'",
+          "autoincrement": false,
+          "name": "post_status",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "comment_status": {
+          "default": "'open'",
+          "autoincrement": false,
+          "name": "comment_status",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ping_status": {
+          "default": "'open'",
+          "autoincrement": false,
+          "name": "ping_status",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_password": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "post_password",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_name": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "post_name",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "to_ping": {
+          "autoincrement": false,
+          "name": "to_ping",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pinged": {
+          "autoincrement": false,
+          "name": "pinged",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_modified": {
+          "default": "'0000-00-00 00:00:00'",
+          "autoincrement": false,
+          "name": "post_modified",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_modified_gmt": {
+          "default": "'0000-00-00 00:00:00'",
+          "autoincrement": false,
+          "name": "post_modified_gmt",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_content_filtered": {
+          "autoincrement": false,
+          "name": "post_content_filtered",
+          "type": "longtext",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_parent": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "post_parent",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "guid": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "guid",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "menu_order": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "menu_order",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_type": {
+          "default": "'post'",
+          "autoincrement": false,
+          "name": "post_type",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "post_mime_type": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "post_mime_type",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "comment_count": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "comment_count",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "jio_posts_ID": {
+          "name": "jio_posts_ID",
+          "columns": [
+            "ID"
+          ]
+        }
+      },
+      "indexes": {
+        "post_author": {
+          "name": "post_author",
+          "columns": [
+            "post_author"
+          ],
+          "isUnique": false
+        },
+        "post_name": {
+          "name": "post_name",
+          "columns": [
+            "post_name"
+          ],
+          "isUnique": false
+        },
+        "post_parent": {
+          "name": "post_parent",
+          "columns": [
+            "post_parent"
+          ],
+          "isUnique": false
+        },
+        "type_status_date": {
+          "name": "type_status_date",
+          "columns": [
+            "post_type",
+            "post_status",
+            "post_date",
+            "ID"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "jio_term_relationships": {
+      "name": "jio_term_relationships",
+      "columns": {
+        "object_id": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "object_id",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "term_taxonomy_id": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "term_taxonomy_id",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "term_order": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "term_order",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "jio_term_relationships_object_id_term_taxonomy_id": {
+          "name": "jio_term_relationships_object_id_term_taxonomy_id",
+          "columns": [
+            "object_id",
+            "term_taxonomy_id"
+          ]
+        }
+      },
+      "indexes": {
+        "term_taxonomy_id": {
+          "name": "term_taxonomy_id",
+          "columns": [
+            "term_taxonomy_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "jio_term_taxonomy": {
+      "name": "jio_term_taxonomy",
+      "columns": {
+        "term_taxonomy_id": {
+          "autoincrement": true,
+          "name": "term_taxonomy_id",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "term_id": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "term_id",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "taxonomy": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "taxonomy",
+          "type": "varchar(32)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "autoincrement": false,
+          "name": "description",
+          "type": "longtext",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parent": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "parent",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "count": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "count",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "jio_term_taxonomy_term_taxonomy_id": {
+          "name": "jio_term_taxonomy_term_taxonomy_id",
+          "columns": [
+            "term_taxonomy_id"
+          ]
+        }
+      },
+      "indexes": {
+        "taxonomy": {
+          "name": "taxonomy",
+          "columns": [
+            "taxonomy"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {
+        "term_id_taxonomy": {
+          "name": "term_id_taxonomy",
+          "columns": [
+            "term_id",
+            "taxonomy"
+          ]
+        }
+      }
+    },
+    "jio_terms": {
+      "name": "jio_terms",
+      "columns": {
+        "term_id": {
+          "autoincrement": true,
+          "name": "term_id",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "slug",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "term_group": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "term_group",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "jio_terms_term_id": {
+          "name": "jio_terms_term_id",
+          "columns": [
+            "term_id"
+          ]
+        }
+      },
+      "indexes": {
+        "name": {
+          "name": "name",
+          "columns": [
+            "name"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {
+        "slug": {
+          "name": "slug",
+          "columns": [
+            "slug"
+          ]
+        }
+      }
+    },
+    "jio_usermeta": {
+      "name": "jio_usermeta",
+      "columns": {
+        "umeta_id": {
+          "autoincrement": true,
+          "name": "umeta_id",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "user_id",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "meta_key": {
+          "autoincrement": false,
+          "name": "meta_key",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "meta_value": {
+          "autoincrement": false,
+          "name": "meta_value",
+          "type": "longtext",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "jio_usermeta_umeta_id": {
+          "name": "jio_usermeta_umeta_id",
+          "columns": [
+            "umeta_id"
+          ]
+        }
+      },
+      "indexes": {
+        "meta_key": {
+          "name": "meta_key",
+          "columns": [
+            "meta_key"
+          ],
+          "isUnique": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "columns": [
+            "user_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "jio_users": {
+      "name": "jio_users",
+      "columns": {
+        "ID": {
+          "autoincrement": true,
+          "name": "ID",
+          "type": "bigint unsigned",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_login": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "user_login",
+          "type": "varchar(60)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_pass": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "user_pass",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_nicename": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "user_nicename",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_email": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "user_email",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_url": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "user_url",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_registered": {
+          "default": "'0000-00-00 00:00:00'",
+          "autoincrement": false,
+          "name": "user_registered",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_activation_key": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "user_activation_key",
+          "type": "varchar(60)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_status": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "user_status",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "display_name": {
+          "default": "''",
+          "autoincrement": false,
+          "name": "display_name",
+          "type": "varchar(250)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "jio_users_ID": {
+          "name": "jio_users_ID",
+          "columns": [
+            "ID"
+          ]
+        }
+      },
+      "indexes": {
+        "user_login_key": {
+          "name": "user_login_key",
+          "columns": [
+            "user_login"
+          ],
+          "isUnique": false
+        },
+        "user_nicename": {
+          "name": "user_nicename",
+          "columns": [
+            "user_nicename"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
