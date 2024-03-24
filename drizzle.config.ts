@@ -1,13 +1,12 @@
 import { type Config } from "drizzle-kit";
-
-import { env } from "~/env";
+import { ENV } from "~/env";
 
 export default {
   schema: "./src/server/db/schema.ts",
   out: "./src/server/db",
   driver: "mysql2",
   dbCredentials: {
-    uri: env.DATABASE_URL,
+    uri: ENV.DATABASE_URL,
   },
   tablesFilter: ["jio_*"],
 } satisfies Config;

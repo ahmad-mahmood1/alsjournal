@@ -1,12 +1,12 @@
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
 
-import { env } from "~/env.js";
+import { ENV } from "~/env";
 import * as schema from "./schema";
 
 export const db = drizzle(
   mysql.createPool({
-    uri: env.DATABASE_URL,
+    uri: ENV.DATABASE_URL,
   }),
   { schema, mode: "default" },
 );
